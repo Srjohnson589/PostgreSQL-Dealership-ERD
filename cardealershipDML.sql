@@ -1,0 +1,259 @@
+-- INSERT INTO customers (
+--     first_name,
+--     last_name,
+--     full_address
+-- ) VALUES (
+--     'Aisha,',
+--     'Felix',
+--     'East Depot Street, Pickerington, OH 43147'
+-- ) , (
+--     'Rodney',
+--     'Ross',
+--     'East Depot Street, Pickerington, OH 43147'
+-- ), (
+--     'Peyton',
+--     'Villegas',
+--     'Newport St., North Brunswick, NJ 08902'
+-- ) , (
+--     'Clyde',
+--     'Shah',
+--     'Stonybrook Ave., Fishers, IN 46037'
+-- ), (
+--     'Angelica',
+--     'Roach',
+--     'Victoria Street, Garland, TX 75043'
+-- ) , (
+--     'Caspian',
+--     'Curtis',
+--     'Bald Hill Drive, Niceville, FL 32578'
+-- ), (
+--     'Alexis',
+--     'Mendoza',
+--     'West Union Dr., Fort Lauderdale, FL 33308'
+-- );
+
+
+-- INSERT INTO cars_sale (
+--     vin_num,
+--     make,
+--     model,
+--     year,
+--     new_or_used,
+--     origin
+-- ) VALUES (
+--     '5GAKRCKD8FJ134744',
+--     'Honda',
+--     'CR-V',
+--     2011,
+--     'used',
+--     'sold'
+-- ), (
+--     'KNDUP132856722935',
+--     'Hyundai',
+--     'Venue',
+--     2022,
+--     'new',
+--     'available'
+-- ), (
+--     '1FMFU17L03LA27315',
+--     'BMV',
+--     'X5',
+--     2017,
+--     'used',
+--     'sold'
+-- ), (
+--     '2C3CDXDT0EH175306',
+--     'Toyota',
+--     'Yaris',
+--     2019,
+--     'used',
+--     'available'
+-- ), (
+--     '1GNKRHKD1EJ275110',
+--     'Tata',
+--     'Tigor Ev',
+--     2023,
+--     'new',
+--     'MI-6'
+-- );
+
+-- INSERT INTO salespeoples (
+--     first_name,
+--     last_name
+-- ) VALUES (
+--     'Charlie',
+--     'Brown'
+-- ), (
+--     'Peppermint',
+--     'Patty'
+-- );
+
+
+-- INSERT INTO mechanics (
+--     first_name,
+--     last_name
+-- ) VALUES (
+--     'Mario',
+--     'Mario'
+-- ), (
+--     'Luigi',
+--     'Mario'
+-- ), (
+--     'Princess',
+--     'Peach'
+-- );
+
+-- INSERT INTO invoices (
+--     vin_num,
+--     sp_id,
+--     customer_id,
+--     amount,
+--     date_sold
+-- ) VALUES (
+--     '5GAKRCKD8FJ134744',
+--     1,
+--     2,
+--     7354.00,
+--     '2023-04-03'
+-- ) , (
+--     '1FMFU17L03LA27315',
+--     2,
+--     6,
+--     12999.00,
+--     '2023-08-08'
+-- ), (
+--     '1GNKRHKD1EJ275110',
+--     1,
+--     4,
+--     25000.00,
+--     '2023-12-11'
+-- );
+
+--I decided I do not like the origin key because
+--I think that is part of the VIN, but I DO
+-- want to know if a car has been sold or is
+--available
+
+-- ALTER TABLE cars_sale
+-- ADD available VARCHAR(10);
+
+-- ALTER TABLE cars_sale
+-- DROP origin;
+
+-- UPDATE cars_sale
+-- SET available = 'sold' 
+-- WHERE vin_num = '1GNKRHKD1EJ275110';
+
+-- UPDATE cars_sale
+-- SET available = 'sold' 
+-- WHERE vin_num = '1FMFU17L03LA27315';
+
+-- UPDATE cars_sale
+-- SET available = 'sold' 
+-- WHERE vin_num = '5GAKRCKD8FJ134744';
+
+-- UPDATE cars_sale
+-- SET available = 'available' 
+-- WHERE vin_num = '2C3CDXDT0EH175306';
+
+-- UPDATE cars_sale
+-- SET available = 'available' 
+-- WHERE vin_num = 'KNDUP132856722935';
+
+-- SELECT *
+-- FROM cars_sale;
+
+
+-- INSERT INTO cars_service (
+--     vin_num,
+--     customer_id,
+--     make,
+--     model,
+--     year
+-- ) VALUES (
+--     '5J6YH28645L018632',
+--     1,
+--     'Ford',
+--     'Explorer',
+--     2000
+-- ), (
+--     '2HSFHAMR5SC060568',
+--     3,
+--     'Chysler',
+--     'Minivan',
+--     2001
+-- ), (
+--     '2HNYD28268H584463',
+--     5,
+--     'Chevrolet',
+--     'Camero',
+--     2007
+-- ), (
+--     '2GNALPEK2C6335343',
+--     7,
+--     'BMV',
+--     'MINI Cooper',
+--     2020
+-- );
+
+
+-- INSERT INTO service_tickets (
+--     vin_num,
+--     date_serviced,
+--     amount
+-- ) VALUES (
+--     '5J6YH28645L018632',
+--     '2024-01-20',
+--     135.00
+-- ), (
+--     '2HSFHAMR5SC060568',
+--     '2024-01-10',
+--     2403.00
+-- ), (
+--     '2HNYD28268H584463',
+--     '2023-07-25',
+--     5320.03
+-- ), (
+--     '2GNALPEK2C6335343',
+--     '2023-12-20',
+--     253.00
+-- ), (
+--     '5J6YH28645L018632',
+--     '2023-04-30',
+--     178.09
+-- );
+
+-- INSERT INTO service_mechanics (
+--     service_id,
+--     mech_id
+-- ) VALUES (
+--     1,
+--     1
+-- ), (
+--     2,
+--     2
+-- ), (
+--     2,
+--     3
+-- ), (
+--     3,
+--     1
+-- ), (
+--     3,
+--     2
+-- ), (
+--     3,
+--     3
+-- ), (
+--     4,
+--     2
+-- ), (
+--     4,
+--     3
+-- ), (
+--     5,
+--     1
+-- );
+
+-- SELECT *
+-- FROM salespeoples;
